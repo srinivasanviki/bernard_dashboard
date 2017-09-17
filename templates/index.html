@@ -1,0 +1,248 @@
+
+{% load staticfiles%}
+<html>
+<head>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+body {
+  font-family: Montserrat;
+}
+* { padding: 0; margin: 0 }
+body, html {
+  height: 100%;
+  min-height: 100%;
+}
+
+#video-container  {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#video-container video,
+.video-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#video-container .video-overlay {
+  z-index: 9999;
+  background: rgba(0,0,0,.5);
+}
+
+#video-container .video-content {
+  z-index: 99999;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#video-container .video-content .inner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+#video-container .video-content .inner h1 {
+  color: white;
+  margin: 20px 0;
+  font-size: 3em;
+}
+
+#video-container .video-content .inner button {
+  background: #03A9F4;
+  border: none;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button {
+  display: block;
+  text-align: center;
+  border-width: 1px 0px 1px 0;
+  border-style: solid;
+  border-image: linear-gradient(to left, transparent, rgba(224, 132, 0, 0.4), transparent);
+  border-image-slice: 1;
+  cursor: pointer;
+}
+
+.text {
+	text-transform: uppercase;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 1.6em;
+  color: rgba(255, 239, 199, 1);
+  text-shadow: 0 0 13px rgba(76, 33, 4, 0.79), 0 0 32px rgba(255, 187, 24, 0.6);
+  display: block;
+  margin-bottom: -4px;
+  margin-top: 1px;
+}
+
+.line-container {
+  width: 230px;
+  margin: auto;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+}
+
+.line--thick {
+  width: 6px;
+  background-color: rgba(255, 239, 199, 1);
+}
+
+.line--thin {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to left, rgba(255, 239, 199, 0.8), rgba(224, 132, 0, 0.4), rgba(224, 132, 0, 0.4), rgba(224, 132, 0, 0.4), rgba(255, 239, 199, 0.8));
+}
+
+.thick-line--short {
+  height: 15px;
+  top: -16px;
+}
+
+.thick-line--long {
+  height: 40px;
+  top: -1px;
+}
+
+.line--top-right {
+  right: 0;
+  transform: skew(45deg);
+  box-shadow: 0px 0px 13px rgba(226, 97, 11, 0.85), -12px -8px 25px 3px rgba(226, 97, 11, 0.8);
+}
+
+.line--top-left {
+  left: 0px;
+  transform: skew(-45deg);
+  box-shadow: 12px -8px 25px 3px rgba(226, 97, 11, 0.8), 0px 0px 13px rgba(226, 97, 11, 0.85);
+}
+
+.line--bottom-right {
+  right: 12px;
+  transform: skew(-45deg);
+  box-shadow: -12px 3px 22px 3px rgba(226, 97, 11, 0.8), 0px 0px 13px rgba(226, 97, 11, 0.85);
+}
+
+.line--bottom-left {
+  left: 12px;
+  transform: skew(45deg);
+  box-shadow: 12px 3px 22px 3px rgba(226, 97, 11, 0.8), 0px 0px 13px rgba(226, 97, 11, 0.85);
+}
+
+.line--top {
+  width: 214px;
+  top: -17px;
+  left: 8px;
+  box-shadow: 0px 5px 34px 5px rgba(251, 169, 40, 0.26);
+}
+
+.line--bottom {
+  width: 160px;
+  top: 38px;
+  left: 35px;
+  box-shadow: 0px -5px 34px 5px rgba(251, 169, 40, 0.26);
+}
+
+.pseudo-class-shadow {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 22px;
+}
+
+.line-container::before {
+  @extend .pseudo-class-shadow;
+  width: 40px;
+  box-shadow: -20px 10px 45px 4px rgba(251, 169, 40, 0.8);
+}
+
+.line-container::after {
+  @extend .pseudo-class-shadow;
+  width: 40px;
+  box-shadow: 207px -12px 45px 4px rgba(251, 169, 40, 0.8);
+}
+
+.line--top-left::before {
+  @extend .pseudo-class-shadow;
+  box-shadow: 28px 20px 34px 3px rgba(251, 169, 40, 0.8);
+}
+
+.line--top-left::after {
+  @extend .pseudo-class-shadow;
+  box-shadow: 48px 20px 34px 3px rgba(251, 169, 40, 0.8);
+}
+
+.line--top-right::before {
+  @extend .pseudo-class-shadow;
+  box-shadow: -48px 20px 34px 3px rgba(251, 169, 40, 0.8);
+}
+
+.line--top-right::after {
+  @extend .pseudo-class-shadow;
+  box-shadow: -58px 20px 34px 3px rgba(251, 169, 40, 0.8);
+}
+
+.line--bottom-right::before {
+  @extend .pseudo-class-shadow;
+  box-shadow: -42px 9px 44px 5px rgba(251, 169, 40, 0.66);
+}
+
+.line--bottom-right::after {
+  @extend .pseudo-class-shadow;
+  box-shadow: -52px 10px 44px 5px rgba(251, 169, 40, 0.66);
+}
+
+.line--bottom-left::before {
+  @extend .pseudo-class-shadow;
+  box-shadow: 32px 10px 44px 5px rgba(251, 169, 40, 0.66);
+}
+
+.line--bottom-left::after {
+  @extend .pseudo-class-shadow;
+  box-shadow: 42px 10px 44px 5px rgba(251, 169, 40, 0.66);
+}
+
+
+
+
+</style>
+</head>
+<body>
+<div id="video-container">
+  <div class="video-overlay"></div>
+  <div class="video-content">
+    <div class="inner">
+      <h1>SENTIENCE BERNARD</h1>
+      <div class="button">
+       <div class="line-container">
+         <a href="/home" style="text-decoration:none;"><span class="text">Activate</span></a>
+         <div class="line line--top-left line--thick thick-line--short"></div>
+         <div class="line line--top-right line--thick thick-line--short"></div>
+         <div class="line line--bottom-left line--thick thick-line--long"></div>
+         <div class="line line--bottom-right line--thick thick-line--long"></div>
+         <div class="line line--top line--thin"></div>
+         <div class="line line--bottom line--thin"></div>
+       </div>
+     </div>
+    </div>
+  </div>
+  <video autoplay loop src="{% static '/intro.mp4' %}" type="video/mp4"></video>
+</div>
+</body>
+</html>
+
