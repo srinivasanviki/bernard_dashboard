@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.conf.urls.static import static
-from views import render_dashboard_home,render_home
+from views import  *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/',render_dashboard_home,name="dashboard"),
-    url(r'^home/',render_home,name="dashboard")
+    url(r'^home/',render_home,name="dashboard"),
+    url(r'^controls/',render_urdf,name="dashboard"),
+    url(r'^ros/',render_ros,name="dashboard")
 ]
 
 

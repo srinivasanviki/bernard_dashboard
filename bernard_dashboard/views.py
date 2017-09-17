@@ -6,3 +6,9 @@ def render_dashboard_home(request):
 
 def render_home(request):
     return render(request, "home.html", {})
+
+def render_urdf(request):
+        return render(request, "controls.html", {})
+
+def render_ros(request):
+    return render(request, "ros.html", {})
