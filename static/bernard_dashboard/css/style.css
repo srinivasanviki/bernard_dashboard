@@ -118,17 +118,17 @@ body .mobileBar i.material-icons {
 /*right sidebar*/
 
 #sideMenuFixed{
-  position: fixed;
+ position:fixed;
   top: 0px;
   right:0px;
   width: 200px;
-  height: 100%;
+  height: 97%;
+  overflow-y:auto;
   padding: 30px;
   border-right: 1px solid rgba(0,0,0,.1);
   background: #1b232a;
   z-index: 9;
 }
-
 
 
 

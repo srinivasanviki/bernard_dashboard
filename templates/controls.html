@@ -2,19 +2,49 @@
 
 {% block content %}
 
+<style>
+body {
+    background-color:#1b232a;;
+}
+    #sliders > input {
+
+    border-radius: 6px;
+    border-color: black;
+    padding: 3px;
+
+}
+</style>
+ <script>
+
+
+     $(function()  {
+
+        var ros = new ROSLIB.Ros({
+             url : 'ws://localhost:9090'
+         });
+
+
+       var jsp = new JOINTSTATEPUBLISHER.JointStatePublisher({
+           ros : ros,
+           divID : 'sliders'
+          });
+
+     });
+
+ </script>
   <div>
-  <div><iframe src="/ros" width="97%" height="620"></iframe></div>
+  <div><iframe src="/ros" width="97%" height="100% "></iframe></div>
   
 <div class="mobileBar">
   <div class="item code">
     <i class="material-icons" style="color:#1565C0">code</i>
   </div>
   <div class="item">
-        <i class="material-icons"><a href="home.html" style="text-decoration:none; color:aliceblue">home</a></i>
+        <i class="material-icons"><a href="/home" style="text-decoration:none; color:aliceblue">home</a></i>
         <span>Home</span>
       </div>
     <div class="item">
-      <i class="material-icons"><a href="controls.html" style="text-decoration:none; color:aliceblue">accessibility</a></i>
+      <i class="material-icons"><a href="/controls" style="text-decoration:none; color:aliceblue">accessibility</a></i>
       <span>Controls</span>
     </div>
     <div class="item">
@@ -35,36 +65,10 @@
 
 
 <!-- sidebar right-->
-<div id="sideMenuFixed">
-  <div background-color:rgba(255, 255, 255, 0.10); border-radius:10px; width:220px; margin-left:-10px;">
-  <form style="margin:10px">
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="firstname" value="Mickey" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="firstname" value="Mickey" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="firstname" value="Mickey" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="firstname" value="Mickey" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="lastname" value="Mouse" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="lastname" value="Mouse" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="lastname" value="Mouse" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <span style="color:aliceblue">First name:</span><br>
-  <input type="text" name="lastname" value="Mouse" style="border-radius:10px; opacity:.6;">
-  <br><br>
-  <input type="submit" value="Submit" class="wrapper" class="button" style=" color:#252C33; border-radius:10px; width:100px; text-align:center; margin-left:25%; margin-bottom:10px">
-  </form>
-  </div> 
+<div id="sideMenuFixed"  >
+  <div style=" border-radius:10px; width:220px; margin-left:-10px;color:#fff;height: 97%;overflow-y: scroll;"  id="sliders">
+
+  </div>
 </div>
 
 {%endblock%}

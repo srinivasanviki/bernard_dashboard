@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <style>
+
     div {position: absolute; top: 0; left: 0;}
+    .center {
+    margin: auto;
+    padding: 5%;
+  }
 </style>
 <script src="http://cdn.robotwebtools.org/threejs/current/three.min.js"></script>
 <script src="http://cdn.robotwebtools.org/threejs/current/ColladaLoader.min.js"></script>
@@ -13,6 +18,7 @@
 <script src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 <script src="http://cdn.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
 
+
 <script>
   /**
    * Setup all visualization elements when the page is loaded.
@@ -20,21 +26,20 @@
   function init() {
     // Connect to ROS.
     var ros = new ROSLIB.Ros({
-      url : 'ws://localhost:36420'
+      url : 'ws://localhost:9090'
     });
 
     // Create the main viewer.
     var viewer = new ROS3D.Viewer({
       divID : 'urdf',
       width : 1100,
-      height : 700,
+      height:700,
       antialias : true
     });
 
     // Add a grid.
     viewer.addObject(new ROS3D.Grid());
 
-    // Setup a client to listen to TFs.
     var tfClient = new ROSLIB.TFClient({
       ros : ros,
       angularThres : 0.01,
@@ -46,7 +51,7 @@
     var urdfClient = new ROS3D.UrdfClient({
       ros : ros,
       tfClient : tfClient,
-      path : 'http://resources.robotwebtools.org/',
+      path : 'http://127.0.0.1:9000/static/meshes/',
       rootObject : viewer.scene,
       loader : ROS3D.COLLADA_LOADER_2
     });
@@ -55,6 +60,9 @@
 </head>
 
 <body onload="init()">
-   <div id="urdf"></div>
+
+   <div class="center" id="urdf" style=" width:90%;height:80%;background-color:#111111">
+
+   </div>
 </body>
 </html>

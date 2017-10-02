@@ -85,6 +85,7 @@ body, html {
   margin-top: 1px;
 }
 
+
 .line-container {
   width: 230px;
   margin: auto;
@@ -186,6 +187,13 @@ body, html {
 .line--top-right::before {
   @extend .pseudo-class-shadow;
   box-shadow: -48px 20px 34px 3px rgba(251, 169, 40, 0.8);
+}
+
+#sliders > input {
+    margin: 18px;
+    border-radius: 6px;
+    border-color: black;
+    padding: 3px;
 }
 
 .line--top-right::after {

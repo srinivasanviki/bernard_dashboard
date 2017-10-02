@@ -24,8 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/',render_dashboard_home,name="dashboard"),
     url(r'^home/',render_home,name="dashboard"),
-    url(r'^controls/',render_urdf,name="dashboard"),
-    url(r'^ros/',render_ros,name="dashboard")
+    url(r'^controls/$', render_urdf),
+    url(r'^ros/',render_ros,name="dashboard"),
 ]
 
 
